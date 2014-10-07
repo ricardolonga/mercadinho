@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/nomeItemLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/nomeItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Informe o item..."
+            android:imeOptions="actionDone"
+            android:inputType="text" >
+        </EditText>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/comboCategoriaLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        
+        <Spinner
+            android:id="@+id/categoriaCombo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        </Spinner>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/botaoAdicionarLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:gravity="right">
+
+        <Button
+            android:id="@+id/botaoAdicionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cadastrar">
+        </Button>
+    </LinearLayout>
+    
+    <ListView
+        android:id="@+id/listaDeCompras"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>
