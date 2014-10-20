@@ -8,7 +8,6 @@ import de.greenrobot.dao.AbstractDao;
 import de.greenrobot.dao.AbstractDaoSession;
 import de.greenrobot.dao.identityscope.IdentityScopeType;
 import de.greenrobot.dao.internal.DaoConfig;
-import br.com.ricardolonga.mercadinho.dao.CategoriaDao;
 import br.com.ricardolonga.mercadinho.dao.ItemDao;
 import br.com.ricardolonga.mercadinho.entity.Categoria;
 import br.com.ricardolonga.mercadinho.entity.Item;

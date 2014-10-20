@@ -1142,6 +1142,8 @@ containing a value of this type.
         public static final int titulo=0x7f050041;
         public static final int top_action_bar=0x7f050020;
         public static final int total=0x7f050043;
+        public static final int totalLayout=0x7f05004b;
+        public static final int totalTextView=0x7f05004c;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int valorUnitario=0x7f05003f;

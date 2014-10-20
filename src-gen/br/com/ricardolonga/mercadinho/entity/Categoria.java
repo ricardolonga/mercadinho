@@ -12,7 +12,7 @@ import de.greenrobot.dao.DaoException;
 /**
  * Entity mapped to table CATEGORIA.
  */
-public class Categoria {
+public class Categoria implements java.io.Serializable {
 
     private Long id;
     /** Not-null value. */
