@@ -17,21 +17,16 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import android.widget.Toast;
 import br.com.ricardolonga.mercadinho.R;
 import br.com.ricardolonga.mercadinho.dao.ItemDao;
 import br.com.ricardolonga.mercadinho.entity.Categoria;
 import br.com.ricardolonga.mercadinho.entity.Item;
-import br.com.ricardolonga.mercadinho.event.ItemPersistidoEvent;
-import br.com.ricardolonga.mercadinho.event.ItemRemovidoEvent;
-import br.com.ricardolonga.mercadinho.event.ListaDeComprasActivityIniciadaEvent;
 import br.com.ricardolonga.mercadinho.shared.ConnectionManager;
 import br.com.ricardolonga.mercadinho.shared.DefaultItemSelectedListener;
 import br.com.ricardolonga.mercadinho.shared.DefaultTextWatcher;
 import br.com.ricardolonga.mercadinho.shared.MercadinhoApplication;
 import br.com.ricardolonga.mercadinho.teladetalhes.DetalhesActivity;
-import de.greenrobot.event.EventBus;
-import de.keyboardsurfer.android.widget.crouton.Crouton;
-import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class ListaDeComprasActivity extends Activity {
 
@@ -49,8 +44,6 @@ public class ListaDeComprasActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.lista_de_compras_activity);
 		
-		EventBus.getDefault().register(this);
-
 		itemDao = ConnectionManager.getInstance().getDaoSession(this).getItemDao();
 
 		/*
@@ -66,7 +59,7 @@ public class ListaDeComprasActivity extends Activity {
 		/*
 		 * Busca
 		 */
-		EventBus.getDefault().post(new ListaDeComprasActivityIniciadaEvent());
+		recarregarListaDeCompras();
 	}
 
 	private void uiBinders() {
@@ -134,7 +127,9 @@ public class ListaDeComprasActivity extends Activity {
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 				itemDao.deleteByKey(id);
 
-				EventBus.getDefault().post(new ItemRemovidoEvent());
+				Toast.makeText(ListaDeComprasActivity.this, "Removido com sucesso", Toast.LENGTH_SHORT).show();
+				
+				recarregarListaDeCompras();
 				
 				return true;
 			}
@@ -150,23 +145,20 @@ public class ListaDeComprasActivity extends Activity {
 
 		itemDao.insert(item);
 		
-		EventBus.getDefault().post(new ItemPersistidoEvent());
+		Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT).show();
+		
+		recarregarListaDeCompras();
 
 		nomeDoItem.setText("");
 	}
 
-	public void onEvent(ItemRemovidoEvent event) {
-		Crouton.makeText(this, "Removido com sucesso", Style.CONFIRM).show();
-		recarregarListaDeCompras();
-	}
-	
-	public void onEvent(ItemPersistidoEvent event) {
-		Crouton.makeText(this, "Salvo com sucesso", Style.CONFIRM).show();
-		recarregarListaDeCompras();
-	}
-	
-	public void onEvent(ListaDeComprasActivityIniciadaEvent event) {
-		recarregarListaDeCompras();
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == RESULT_OK) {
+			Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT).show();
+			
+			recarregarListaDeCompras();
+		}
 	}
 	
 	private void recarregarListaDeCompras() {
@@ -182,10 +174,4 @@ public class ListaDeComprasActivity extends Activity {
 		((TextView) findViewById(R.id.totalTextView)).setText("Total R$: " + total);
 	}
 	
-	@Override
-	protected void onDestroy() {
-		EventBus.getDefault().unregister(this);
-		super.onDestroy();
-	}
-
 }

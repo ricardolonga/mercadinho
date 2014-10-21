@@ -8,10 +8,8 @@ import android.widget.EditText;
 import br.com.ricardolonga.mercadinho.R;
 import br.com.ricardolonga.mercadinho.dao.ItemDao;
 import br.com.ricardolonga.mercadinho.entity.Item;
-import br.com.ricardolonga.mercadinho.event.ItemPersistidoEvent;
 import br.com.ricardolonga.mercadinho.shared.ConnectionManager;
 import br.com.ricardolonga.mercadinho.shared.DefaultTextWatcher;
-import de.greenrobot.event.EventBus;
 
 public class DetalhesActivity extends Activity {
 
@@ -44,8 +42,6 @@ public class DetalhesActivity extends Activity {
 				}
 				
 				setResult(RESULT_OK);
-				
-				EventBus.getDefault().post(new ItemPersistidoEvent());
 				
 				finish();
 			}

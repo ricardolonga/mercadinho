@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:padding="5dp">
 
     <LinearLayout
         android:id="@+id/nomeItemLayout"
@@ -15,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Informe o item..."
+            android:hint="@string/item_hint"
             android:imeOptions="actionDone"
             android:inputType="text" >
         </EditText>
@@ -39,14 +40,14 @@
         android:id="@+id/botaoAdicionarLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
+        android:gravity="end"
         android:orientation="horizontal" >
 
         <Button
             android:id="@+id/botaoAdicionar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cadastrar" >
+            android:text="@string/cadastrar" >
         </Button>
     </LinearLayout>
 
@@ -60,7 +61,7 @@
         android:id="@+id/totalLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
+        android:gravity="end"
         android:orientation="horizontal" >
 
         <TextView
