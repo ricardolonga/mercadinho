@@ -3,5 +3,10 @@
 
     <string name="app_name">Mercadinho</string>
     <string name="title_activity_detalhes">Detalhes do item</string>
+    <string name="qtde_hint">Informe a quantidade...</string>
+    <string name="valor_unitario_hint">Informe o valor unitário...</string>
+    <string name="item_hint">Informe o item...</string>
+    <string name="salvar">Salvar</string>
+    <string name="cadastrar">Cadastrar</string>
 
 </resources>
