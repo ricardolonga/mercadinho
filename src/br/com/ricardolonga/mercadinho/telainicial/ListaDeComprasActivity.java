@@ -127,7 +127,7 @@ public class ListaDeComprasActivity extends Activity {
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 				itemDao.deleteByKey(id);
 
-				Toast.makeText(ListaDeComprasActivity.this, "Removido com sucesso", Toast.LENGTH_SHORT).show();
+				Toast.makeText(ListaDeComprasActivity.this, R.string.removido_sucesso, Toast.LENGTH_SHORT).show();
 				
 				recarregarListaDeCompras();
 				
@@ -145,7 +145,7 @@ public class ListaDeComprasActivity extends Activity {
 
 		itemDao.insert(item);
 		
-		Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, R.string.salvo_sucesso, Toast.LENGTH_SHORT).show();
 		
 		recarregarListaDeCompras();
 
@@ -155,7 +155,7 @@ public class ListaDeComprasActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == RESULT_OK) {
-			Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.salvo_sucesso, Toast.LENGTH_SHORT).show();
 			
 			recarregarListaDeCompras();
 		}

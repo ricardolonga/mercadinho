@@ -9,8 +9,6 @@ import br.com.ricardolonga.mercadinho.entity.Categoria;
 
 public class MercadinhoApplication extends Application {
 	
-	public static final String APPTAG = "mercadinho";
-	
 	public List<Categoria> categorias = Collections.emptyList();
 	
 	@Override

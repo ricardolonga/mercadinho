@@ -42,7 +42,9 @@ public final class R {
         public static final int cadastrar=0x7f040006;
         public static final int item_hint=0x7f040004;
         public static final int qtde_hint=0x7f040002;
+        public static final int removido_sucesso=0x7f040007;
         public static final int salvar=0x7f040005;
+        public static final int salvo_sucesso=0x7f040008;
         public static final int title_activity_detalhes=0x7f040001;
         public static final int valor_unitario_hint=0x7f040003;
     }
