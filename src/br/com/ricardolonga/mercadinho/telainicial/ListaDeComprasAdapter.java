@@ -38,7 +38,6 @@ public class ListaDeComprasAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// Recupera o Carro da posi��o atual
 		final Item item = itens.get(position);
 
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

@@ -11,17 +11,17 @@
     <application android:allowBackup="true"
 		         android:icon="@drawable/ic_launcher"
 		         android:label="@string/app_name" 
-		         android:name="br.com.ricardolonga.mercadinho.shared.MercadinhoApplication"
-		         android:theme="@style/AppTheme">
+		         android:name="br.com.ricardolonga.mercadinho.shared.MercadinhoApplication_"
+		         android:theme="@style/AppBaseTheme">
 
-        <activity android:name="br.com.ricardolonga.mercadinho.telainicial.ListaDeComprasActivity" android:label="@string/app_name">
+        <activity android:name="br.com.ricardolonga.mercadinho.telainicial.ListaDeComprasActivity_" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
-        <activity android:name="br.com.ricardolonga.mercadinho.teladetalhes.DetalhesActivity" android:label="@string/title_activity_detalhes" />
+        <activity android:name="br.com.ricardolonga.mercadinho.teladetalhes.DetalhesActivity_" android:label="@string/title_activity_detalhes" />
 
         <uses-library android:name="android.test.runner" />
     </application>

@@ -3,10 +3,15 @@ package br.com.ricardolonga.mercadinho.shared;
 import java.util.Collections;
 import java.util.List;
 
+import org.androidannotations.annotations.EApplication;
+import org.androidannotations.annotations.Trace;
+
 import android.app.Application;
+import android.util.Log;
 import br.com.ricardolonga.mercadinho.dao.CategoriaDao;
 import br.com.ricardolonga.mercadinho.entity.Categoria;
 
+@EApplication
 public class MercadinhoApplication extends Application {
 	
 	public static final String APPTAG = "mercadinho";
@@ -20,7 +25,8 @@ public class MercadinhoApplication extends Application {
 		carregarCategoriasPadroes();
 	}
 
-	private void carregarCategoriasPadroes() {
+	@Trace(tag=MercadinhoApplication.APPTAG, level=Log.DEBUG)
+	void carregarCategoriasPadroes() {
 		CategoriaDao categoriaDao = ConnectionManager.getInstance().getDaoSession(getApplicationContext()).getCategoriaDao();
 		
 		categorias = categoriaDao.loadAll();
