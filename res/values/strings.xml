@@ -8,5 +8,8 @@
     <string name="item_hint">Informe o item...</string>
     <string name="salvar">Salvar</string>
     <string name="cadastrar">Cadastrar</string>
+    
+    <string name="removido_sucesso">Removido com sucesso</string>
+    <string name="salvo_sucesso">Salvo com sucesso</string>
 
 </resources>

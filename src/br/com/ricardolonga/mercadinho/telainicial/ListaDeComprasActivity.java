@@ -17,7 +17,6 @@ import org.androidannotations.annotations.ViewById;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -69,8 +68,6 @@ public class ListaDeComprasActivity extends Activity {
 		EventBus.getDefault().register(this);
 		
 		itemDao = ConnectionManager.getInstance().getDaoSession(this).getItemDao();
-		
-		EventBus.getDefault().post(new ListaDeComprasActivityIniciadaEvent());
 	}
 	
 	@AfterViews
@@ -78,10 +75,12 @@ public class ListaDeComprasActivity extends Activity {
 		botaoCadastrar.setEnabled(false);
 
 		carregarCategorias();
+		
+		EventBus.getDefault().post(new ListaDeComprasActivityIniciadaEvent());
 	}
 	
-	@Trace(tag=MercadinhoApplication.APPTAG, level=Log.DEBUG)
-	private void carregarCategorias() {
+	@Trace
+	void carregarCategorias() {
 		final List<Categoria> categorias = app.categorias;
 		ArrayAdapter<Categoria> categoriasArrayAdapter = new ArrayAdapter<Categoria>(this, android.R.layout.simple_spinner_item, categorias);
 		categoriasArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -112,7 +111,7 @@ public class ListaDeComprasActivity extends Activity {
 		
 		irParaDetalhes.putExtra("item", itensDaLista.get(position));
 		
-		startActivityForResult(irParaDetalhes, 0);
+		startActivity(irParaDetalhes);
 	}
 	
 	@ItemLongClick(R.id.listaDeCompras)
@@ -122,8 +121,8 @@ public class ListaDeComprasActivity extends Activity {
 		EventBus.getDefault().post(new ItemRemovidoEvent());
 	}
 
+	@Trace
 	@Click(R.id.botaoAdicionar)
-	@Trace(tag=MercadinhoApplication.APPTAG, level=Log.DEBUG)
 	void addItem() {
 		String itemTitle = nomeDoItem.getText().toString();
 
@@ -139,12 +138,14 @@ public class ListaDeComprasActivity extends Activity {
 	}
 
 	public void onEvent(ItemRemovidoEvent event) {
-		Crouton.makeText(this, "Removido com sucesso", Style.CONFIRM).show();
+		Crouton.clearCroutonsForActivity(this);
+		Crouton.makeText(this, R.string.removido_sucesso, Style.INFO, R.id.croutonSpace).show();
 		recarregarListaDeCompras();
 	}
 	
 	public void onEvent(ItemPersistidoEvent event) {
-		Crouton.makeText(this, "Salvo com sucesso", Style.CONFIRM).show();
+		Crouton.clearCroutonsForActivity(this);
+		Crouton.makeText(this, R.string.salvo_sucesso, Style.CONFIRM, R.id.croutonSpace).show();
 		recarregarListaDeCompras();
 	}
 	
@@ -152,7 +153,7 @@ public class ListaDeComprasActivity extends Activity {
 		recarregarListaDeCompras();
 	}
 	
-	@Trace(tag=MercadinhoApplication.APPTAG, level=Log.DEBUG)
+	@Trace
 	void recarregarListaDeCompras() {
 		itensDaLista = itemDao.queryRawCreate(", categoria C WHERE T.ID_CATEGORIA=C._ID ORDER BY C.NOME ASC").list();
 		listaDeCompras.setAdapter(new ListaDeComprasAdapter(this, itensDaLista));
@@ -169,6 +170,9 @@ public class ListaDeComprasActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		EventBus.getDefault().unregister(this);
+		
+		Crouton.cancelAllCroutons();
+		
 		super.onDestroy();
 	}
 

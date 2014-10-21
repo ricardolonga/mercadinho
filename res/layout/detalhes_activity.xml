@@ -2,48 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:paddingTop="30dp" >
 
     <LinearLayout
-        android:id="@+id/lTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="10dp" >
 
-        <EditText
-            android:id="@+id/qtde"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/lTitulo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/qtde_hint"
-            android:inputType="number"
-            android:padding="5dp" />
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/qtde"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/qtde_hint"
+                android:inputType="number"
+                android:padding="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/valorUnitario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/valor_unitario_hint"
+                android:inputType="numberDecimal"
+                android:padding="5dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/idBotaoSalvar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="20dp"
+            android:text="@string/salvar" />
         
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/lDescricao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/valorUnitario"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/valor_unitario_hint"
-            android:inputType="numberDecimal"
-            android:padding="5dp" />
-        
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/idBotaoSalvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:padding="5dp"
-        android:text="@string/salvar" />
 
 </LinearLayout>

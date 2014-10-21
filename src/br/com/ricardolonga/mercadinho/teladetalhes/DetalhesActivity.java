@@ -4,6 +4,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.TextChange;
+import org.androidannotations.annotations.Trace;
 import org.androidannotations.annotations.ViewById;
 
 import android.app.Activity;
@@ -62,14 +63,17 @@ public class DetalhesActivity extends Activity {
 			item.setQuantidade(Integer.valueOf(qtde));
 			item.setValorUnitario(Double.valueOf(valorUnitario));
 			item.setValorTotal(item.getQuantidade() * item.getValorUnitario());
-			itemDao.update(item);
+			atualizarItem();
 		}
-		
-		setResult(RESULT_OK);
 		
 		EventBus.getDefault().post(new ItemPersistidoEvent());
 		
 		finish();
+	}
+
+	@Trace
+	void atualizarItem() {
+		itemDao.update(item);
 	}
 	
 }
